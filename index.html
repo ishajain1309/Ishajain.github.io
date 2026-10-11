@@ -1,0 +1,523 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Isha Jain | AI & Data Science Portfolio</title>
+<meta name="description" content="Isha Jain's portfolio showcasing data analytics, machine learning and software projects.">
+
+<style>
+:root {
+  --bg: #0b1020;
+  --card: #141c30;
+  --text: #f3f6ff;
+  --muted: #a8b2cc;
+  --accent: #65e6cf;
+  --purple: #a78bfa;
+  --border: #29344d;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.container { width: min(1080px, 90%); margin: auto; }
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(11,16,32,.94);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+}
+
+.nav-inner {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.logo { font-size: 22px; font-weight: bold; }
+.logo span, .accent { color: var(--accent); }
+
+.nav-links { display: flex; gap: 22px; flex-wrap: wrap; }
+.nav-links a { color: var(--muted); font-size: 14px; }
+.nav-links a:hover { color: var(--accent); }
+
+.hero {
+  padding: 100px 0 85px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  align-items: center;
+  gap: 50px;
+}
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(42px, 6vw, 68px);
+  line-height: 1.12;
+  margin: 18px 0;
+  letter-spacing: -2px;
+}
+
+h1 span {
+  color: var(--accent);
+}
+
+.hero h2 {
+  font-size: 21px;
+  color: var(--muted);
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+p { color: var(--muted); }
+
+.hero p { max-width: 580px; }
+
+.buttons { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 28px; }
+
+.btn {
+  display: inline-block;
+  padding: 11px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  border: 1px solid var(--accent);
+  transition: .2s;
+}
+
+.btn.primary { background: var(--accent); color: #07131b; }
+.btn:hover { transform: translateY(-3px); }
+
+.profile-card {
+  background: linear-gradient(145deg, #192943, #17172e);
+  border: 1px solid var(--border);
+  padding: 35px 25px;
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 0 20px 60px #0003;
+}
+
+.avatar {
+  width: 115px;
+  height: 115px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  color: #101528;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.profile-card h3 { font-size: 23px; }
+.profile-card p { margin-top: 5px; }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.stat {
+  background: #ffffff08;
+  border-radius: 10px;
+  padding: 12px 5px;
+}
+
+.stat strong { display: block; color: var(--accent); font-size: 21px; }
+.stat span { font-size: 11px; color: var(--muted); }
+
+section { padding: 75px 0; }
+
+.section-heading { margin-bottom: 30px; }
+.section-heading h2 { font-size: 34px; margin-bottom: 8px; }
+.section-heading p { max-width: 650px; }
+
+.about-box {
+  background: var(--card);
+  padding: 30px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+}
+
+.skills-grid, .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.skill-card, .project-card, .experience-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 25px;
+  border-radius: 15px;
+  transition: border-color .2s, transform .2s;
+}
+
+.skill-card:hover, .project-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+.skill-card h3, .project-card h3, .experience-card h3 {
+  margin-bottom: 12px;
+  font-size: 19px;
+}
+
+.tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+
+.tag {
+  background: #65e6cf12;
+  color: var(--accent);
+  border: 1px solid #65e6cf35;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.project-number {
+  color: var(--accent);
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.project-card h3 { margin-top: 10px; }
+
+.project-card p { font-size: 14px; }
+
+.project-card ul {
+  padding-left: 18px;
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.project-card li { margin-bottom: 7px; }
+
+.project-links { margin-top: 18px; }
+.project-links a { color: var(--accent); font-size: 13px; }
+
+.timeline { border-left: 2px solid var(--accent); padding-left: 25px; }
+.experience-card { margin-bottom: 20px; }
+.date { color: var(--accent); font-size: 13px; margin-bottom: 8px; }
+
+.achievement-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.achievement {
+  padding: 18px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.contact-box {
+  background: linear-gradient(135deg, #172a3b, #201c3b);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 40px;
+  text-align: center;
+}
+
+.contact-box p { margin: 12px auto 22px; max-width: 550px; }
+.contact-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+
+footer {
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 25px 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+@media (max-width: 720px) {
+  .nav-inner { padding: 15px 0; align-items: flex-start; flex-direction: column; }
+  .nav-links { gap: 14px; }
+  .hero { grid-template-columns: 1fr; padding: 65px 0; gap: 30px; }
+  .profile-card { max-width: 420px; width: 100%; margin: auto; }
+  .skills-grid, .projects-grid, .achievement-list { grid-template-columns: 1fr; }
+  section { padding: 55px 0; }
+  .section-heading h2 { font-size: 29px; }
+  .contact-box { padding: 28px 18px; }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a class="logo" href="#home">Isha<span>.</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="container hero" id="home">
+    <div>
+      <div class="eyebrow">AI & Data Science · Portfolio</div>
+      <h1>Hi, I'm <span>Isha Jain.</span></h1>
+      <h2>Aspiring Data Analyst & AI/ML Enthusiast</h2>
+      <p>
+        I turn raw data into meaningful insights and build practical,
+        data-driven solutions. I enjoy exploring patterns, creating
+        dashboards, and developing projects that solve real-world problems.
+      </p>
+      <div class="buttons">
+        <a class="btn primary" href="#projects">Explore My Work ↗</a>
+        <a class="btn" href="#contact">Let's Connect</a>
+      </div>
+    </div>
+
+    <div class="profile-card">
+      <div class="avatar">IJ</div>
+      <h3>Isha Jain</h3>
+      <p>AI & Data Science Student</p>
+      <p>📍 India</p>
+      <div class="stats">
+        <div class="stat"><strong>4</strong><span>Featured Projects</span></div>
+        <div class="stat"><strong>5+</strong><span>Hackathons</span></div>
+        <div class="stat"><strong>9+</strong><span>CGPA</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">A little about me</div>
+        <h2>About Me</h2>
+      </div>
+      <div class="about-box">
+        <p>
+          I'm pursuing B.Tech in Artificial Intelligence and Data Science
+          at Rajiv Gandhi Institute of Technology. I have hands-on experience
+          in data analytics through projects and an internship at InAmigos
+          Foundation. My interests include data analytics, machine learning,
+          data visualization, and building useful applications.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">What I work with</div>
+        <h2>Skills & Technologies</h2>
+        <p>Tools and technologies I use to analyze data and build projects.</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>💻 Programming</h3>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">SQL</span>
+            <span class="tag">Java</span><span class="tag">JavaScript</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>📊 Data Analytics</h3>
+          <div class="tags">
+            <span class="tag">Power BI</span><span class="tag">Excel</span>
+            <span class="tag">EDA</span><span class="tag">Data Cleaning</span>
+            <span class="tag">Data Visualization</span><span class="tag">KPI Analysis</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>🤖 Data Science & ML</h3>
+          <div class="tags">
+            <span class="tag">Pandas</span><span class="tag">NumPy</span>
+            <span class="tag">Matplotlib</span><span class="tag">Seaborn</span>
+            <span class="tag">Scikit-learn</span><span class="tag">Machine Learning</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h3>🧰 Tools & Frameworks</h3>
+          <div class="tags">
+            <span class="tag">Git</span><span class="tag">GitHub</span>
+            <span class="tag">MySQL</span><span class="tag">SQLite</span>
+            <span class="tag">Flask</span><span class="tag">REST APIs</span>
+            <span class="tag">React</span><span class="tag">Vite</span>
+            <span class="tag">HTML</span><span class="tag">CSS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Things I've built</div>
+        <h2>Featured Projects</h2>
+        <p>A selection of projects combining analytics, machine learning, and application development.</p>
+      </div>
+
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-number">PROJECT 01</div>
+          <h3>UPI Failure Intelligence</h3>
+          <p>Analyzed UPI transaction data to discover payment failure patterns and operational bottlenecks.</p>
+          <ul>
+            <li>Cleaned data using Python.</li>
+            <li>Performed SQL-based analysis.</li>
+            <li>Created a Power BI dashboard with key metrics and trends.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">SQL</span>
+            <span class="tag">Power BI</span><span class="tag">SQLite</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/ishajain1309/UPI_failure_Intelligence" target="_blank" rel="noopener">View Repository ↗</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-number">PROJECT 02</div>
+          <h3>DeliverIQ</h3>
+          <p>A machine-learning project for analyzing food delivery data and delivery-related outcomes.</p>
+          <ul>
+            <li>Performed preprocessing and feature engineering.</li>
+            <li>Trained and evaluated machine-learning models.</li>
+            <li>Built a reusable prediction pipeline.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">Pandas</span>
+            <span class="tag">Scikit-learn</span><span class="tag">ML</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/ishajain1309" target="_blank" rel="noopener">Explore GitHub ↗</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-number">PROJECT 03</div>
+          <h3>EduPredict</h3>
+          <p>An intelligent college recommendation system designed for MHT-CET aspirants.</p>
+          <ul>
+            <li>Uses percentile, category, location, and preferred branch.</li>
+            <li>Processes cutoff data for relevant recommendations.</li>
+            <li>Provides a web interface built with Flask.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">Python</span><span class="tag">Flask</span>
+            <span class="tag">Pandas</span><span class="tag">HTML/CSS</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/ishajain1309" target="_blank" rel="noopener">Explore GitHub ↗</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-number">PROJECT 04</div>
+          <h3>ReturnRadar</h3>
+          <p>A web application for tracking product return deadlines and warranty timelines.</p>
+          <ul>
+            <li>Tracks delivery dates and return windows.</li>
+            <li>Displays warranty and product protection status.</li>
+            <li>Features an interactive React interface.</li>
+          </ul>
+          <div class="tags">
+            <span class="tag">React</span><span class="tag">Vite</span>
+            <span class="tag">JavaScript</span><span class="tag">Framer Motion</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/ishajain1309/ReturnRadar" target="_blank" rel="noopener">View Repository ↗</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">My journey</div>
+        <h2>Experience & Education</h2>
+      </div>
+      <div class="timeline">
+        <div class="experience-card">
+          <div class="date">JUNE 2026 — JULY 2026 · REMOTE</div>
+          <h3>Data Analytics Intern — InAmigos Foundation</h3>
+          <p>Organized social-impact data, used Excel and AI-assisted analysis to identify patterns, and prepared data-driven reports and presentations.</p>
+        </div>
+        <div class="experience-card">
+          <div class="date">2024 — PRESENT</div>
+          <h3>B.Tech — Artificial Intelligence & Data Science</h3>
+          <p>Rajiv Gandhi Institute of Technology, Mumbai.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="achievements">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Milestones</div>
+        <h2>Achievements & Certifications</h2>
+      </div>
+      <div class="achievement-list">
+        <div class="achievement">🏅 <strong>9.0+ CGPA</strong><p>Academic achievement</p></div>
+        <div class="achievement">📚 <strong>NPTEL</strong><p>Data Science for Engineers</p></div>
+        <div class="achievement">📊 <strong>Data Analytics</strong><p>InAmigos Foundation Internship Certificate</p></div>
+        <div class="achievement">🚀 <strong>5+ Hackathons</strong><p>Including Adobe University Hackathon and Smart India Hackathon participation</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="contact-box">
+        <div class="eyebrow">Have an opportunity?</div>
+        <h2>Let's Connect.</h2>
+        <p>I'm interested in learning, collaborating, and building useful data-driven solutions. Feel free to reach out!</p>
+        <div class="contact-links">
+          <a class="btn primary" href="mailto:isha.jain1309@gmail.com">✉ Email Me</a>
+          <a class="btn" href="https://linkedin.com/in/isha-jain-92a30b2a6" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="btn" href="https://github.com/ishajain1309" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">Designed with care by Isha Jain · © 2026</div>
+</footer>
+
+</body>
+</html>
